@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online IDE</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body onload="languageMode('c_cpp')">
+
+    <div id="mainBar" class="header"> Mayur's Online IDE </div>
+   
+   <form action="CodeCompiler" method="post" id="compiler" target="outputFrame">
+    <div class="control-panel">
+        Font Size:
+        &nbsp;
+        <select id="fontSize"  class="fontSize" onchange="fontChange(value)">
+            <option value="0" selected>18</option>
+            <option value="1">19</option>
+            <option value="2">20</option>
+            <option value="3">21</option>
+            <option value="4">22</option>
+            <option value="5">23</option>
+            <option value="6">24</option>
+            <option value="7">25</option>
+            <option value="8">26</option>
+            <option value="9">27</option>
+            <option value="10">28</option>
+        </select>
+        Select Language:
+        &nbsp;
+        <select id="languages" name="languages" class="languages" onchange="languageMode(value)">
+            <option value="c_cpp" selected> C++ (GCC 11.1.0) </option>
+            <option value="java"> Java (JDK 17.0.1)</option>
+            <option value="python"> Python3 (3.9.9)</option>
+        </select>
+    </div>
+    <div class="editor" id="editor" onkeydown="colorChange()"></div>
+    <textarea id="codeText" form="compiler" name="codeText" hidden></textarea>
+	
+    <div class="button-container">
+        <button class="btn" type="submit" onclick="executeCode()"> Run </button>
+    </div>
+    <textarea id="inputText" name="inputText" placeholder="Stdin (For multiple input press enter after every input)" form="compiler"></textarea>
+    <label id="finalOutput">Result:</label>
+    <iframe class="output" id="outputFrame" name="outputFrame"></iframe>
+   </form>
+    <script src="lib/ace.js"></script>
+    <script src="lib/theme-monokai.js"></script>
+    <script src="js/ide.js"></script>
+    <script src="lib/ext-language_tools.js"></script>
+
+</body>
+</html>
